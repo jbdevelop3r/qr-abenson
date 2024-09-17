@@ -1,0 +1,375 @@
+<!-- CSS -->
+<style>
+  .container-payment-link {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e22aa;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 25px 30%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* First slanted rectangle */
+  .container-payment-link::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 2000px;
+    height: 200%;
+    left: calc(100% - 400px);
+    top: 40%;
+    background: linear-gradient(
+      221.21deg,
+      rgba(30, 34, 170, 0) 14.7%,
+      rgba(9, 11, 73, 0.1) 71.16%
+    );
+    transform: rotate(25.47deg);
+  }
+
+  /* Second slanted rectangle */
+  .container-payment-link::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 2000px;
+    height: 200%;
+    left: calc(100% - 450px);
+    top: 40%;
+    background: linear-gradient(
+      221.21deg,
+      rgba(30, 34, 170, 0) 14.7%,
+      rgba(9, 11, 73, 0.1) 71.16%
+    );
+    transform: rotate(25.47deg);
+  }
+
+  .container-payment-link * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .status-container {
+    display: flex;
+    justify-content: space-around;
+    /* background-color: #f1f2f6; */
+    background-color: #fff;
+    border-radius: 12px;
+    height: fit-content;
+    padding: 16px 20px;
+    margin-top: 16px;
+    height: 250px;
+  }
+
+  .payment-info-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: column;
+    padding-left: 20px;
+  }
+
+  .payment-qr-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .payment-details {
+    display: flex;
+    width: 100%;
+  }
+
+  .payment-amount {
+    display: block;
+    width: 100%;
+  }
+
+  .total-amount {
+    font-size: 28px;
+    font-weight: 600;
+    color: #4c525c;
+  }
+
+  .total-amount-title {
+    color: #8a8a8a;
+  }
+
+  .transaction-id {
+    color: #767676;
+    margin-bottom: 10px;
+  }
+
+  .transaction-no {
+    font-weight: 600;
+  }
+
+  .qr {
+    display: flex;
+    margin-right: 5px;
+  }
+
+  .qr-img {
+    /* height: 109px; */
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+
+
+  .search-bar {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    box-sizing: border-box;
+    justify-content: center;
+    height: 40px;
+  }
+
+  .search-bar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #d5dae4;
+  }
+
+  ::placeholder {
+    color: #d5dae4;
+    font-size: 14px;
+  }
+
+  .search-bar button .searchbar-img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pay-btn-container {
+    width: 80%;
+  }
+
+  .pay-btn {
+    background-color: #fae100;
+    border-radius: 28px;
+    border: none;
+    display: block;
+    color: #0a4488 !important;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 15px !important;
+    line-height: 2 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+
+  .heading {
+    display: none;
+  }
+
+  .sub-heading {
+    color: #fcfcfd;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .heading-icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  .abenson-pay {
+    display: block;
+    width: 324.85px;
+    height: 62.29px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 1200px) {
+    .payment-details {
+      display: block;
+    }
+
+    .heading {
+      display: block;
+      color: #fcfcfd;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .transaction-id {
+      text-align: center;
+    }
+
+    .qr {
+      width: 100%;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .qr-img {
+      height: 169px;
+      width: 169px;
+    }
+
+    .container-payment-link {
+      padding: 25px 20px;
+    }
+
+    /* First slanted rectangle */
+    .container-payment-link::before {
+      left: calc(100% - 300px);
+    }
+
+    /* Second slanted rectangle */
+    .container-payment-link::after {
+      left: calc(100% - 350px);
+    }
+
+    .status-container {
+      padding: 16px;
+    }
+  }
+</style>
+
+<!-- HTML -->
+<div class="container-payment-link">
+  <div class="heading-icon">
+    <img
+      src="{{media url=wysiwyg/pages/abensonpay.png}}"
+      alt=""
+      class="abenson-pay"
+    />
+  </div>
+  <div class="sub-heading">
+    Safe and secured payment for your Abenson purchases
+  </div>
+  <div style="display: flex; justify-content: center">
+    <form
+      action=""
+      autocomplete="off"
+      class="search-bar"
+      id="transaction-search-form"
+    >
+      <input type="text" placeholder="Enter Transaction ID..." name="search" />
+      <button type="submit">
+        <img
+          src="{{media url=wysiwyg/pages/payment-link-search-icon.png}}"
+          class="searchbar-img"
+          alt=""
+        />
+      </button>
+    </form>
+  </div>
+  <div class="status-container">
+    <div class="payment-info-container">
+      <div class="transaction-id">
+        Transaction ID:
+        <span class="transaction-no" id="trans-number">########</span>
+      </div>
+      <div class="payment-details">
+        <div class="payment-amount">
+          <div class="total-amount-title">Total Amount</div>
+          <div class="total-amount">
+            PHP <span id="trans-total-amount">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="pay-btn-container">
+        <a href="#" class="pay-btn" id="payment-link" target="_blank">Pay</a>
+      </div>
+    </div>
+    <div class="payment-qr-container">
+      <div class="qr">
+        <img
+          id="trans-qr-code"
+          src="https://barcodeapi.org/api/qr/abenson.com?"
+          class="qr-img"
+          alt="QR Code"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <script defer type="text/simi-script">  -->
+<script>
+  var searchForm = document.querySelector('#transaction-search-form')
+  searchForm.onsubmit = e => {
+    const searchValue = document.querySelector('input[name="search"]').value
+    e.preventDefault()
+
+    const currentUrl = new URL(window.location)
+
+    currentUrl.searchParams.set('tid', searchValue)
+
+    history.pushState(null, '', currentUrl)
+    loadDoc()
+  }
+
+  var transNumberElem = document.querySelector('#trans-number')
+  var totalAmountElem = document.querySelector('#trans-total-amount')
+  var paymentLinkElem = document.querySelector('#payment-link')
+  var qrCodeElem = document.querySelector('#trans-qr-code')
+
+  function loadDoc() {
+    var queryString = window.location.search
+    var urlParams = new URLSearchParams(queryString)
+    var orderNumber = urlParams.get('tid')
+    var link =
+      'https://pwa.abenson-shop.online/solutions/pay?order_number=' +
+      orderNumber
+    var xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        try {
+          var jsonResponse = JSON.parse(this.responseText)
+          console.log(jsonResponse)
+          transNumberElem.innerText = jsonResponse.order_number || ''
+          totalAmountElem.innerText = jsonResponse.total_amount || 0
+          paymentLinkElem.href = jsonResponse.payment_link || ''
+          transNumberElem .innerText = jsonResponse.status || ''
+          qrCodeElem.src =
+            'https://barcodeapi.org/api/qr/' +
+            (jsonResponse.payment_link || 'abenson.com')
+        } catch (e) {
+          console.error('Error parsing JSON:', e)
+          document.getElementById('demo').innerHTML =
+            'Error parsing JSON response.'
+        }
+      } else if (this.readyState == 4) {
+        console.error('Error loading document:', this.status, this.statusText)
+      }
+    }
+
+    xhttp.open('GET', link, true)
+    xhttp.send()
+    console.log('TEST ME')
+  }
+
+  loadDoc()
+</script>
