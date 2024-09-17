@@ -56,7 +56,7 @@
     justify-content: space-around;
     /* background-color: #f1f2f6; */
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 25px;
     height: fit-content;
     padding: 16px 20px;
     margin-top: 16px;
@@ -75,8 +75,9 @@
   .payment-qr-container {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
+    padding-right: 20px;
   }
 
   .payment-details {
@@ -93,15 +94,28 @@
     font-size: 28px;
     font-weight: 600;
     color: #4c525c;
+    margin-bottom: 3px;
   }
 
   .total-amount-title {
     color: #8a8a8a;
+    font-size: 13px;
   }
 
   .transaction-id {
     color: #767676;
-    margin-bottom: 10px;
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .payment-status-cont {
+    color: #767676;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .payment-status-value {
+    font-weight: 600;
   }
 
   .transaction-no {
@@ -115,7 +129,7 @@
 
   .qr-img {
     /* height: 109px; */
-    width: 200px;
+    width: 180px;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
@@ -166,7 +180,7 @@
   }
 
   .pay-btn-container {
-    width: 80%;
+    width: 90%;
   }
 
   .pay-btn {
@@ -291,6 +305,10 @@
         Transaction ID:
         <span class="transaction-no" id="trans-number">########</span>
       </div>
+      <div class="payment-status-cont">
+        Status:
+        <span class="payment-status-value" id="payment-status">########</span>
+      </div>
       <div class="payment-details">
         <div class="payment-amount">
           <div class="total-amount-title">Total Amount</div>
@@ -312,12 +330,13 @@
           alt="QR Code"
         />
       </div>
+
     </div>
   </div>
 </div>
 
-<!-- <script defer type="text/simi-script">  -->
-<script>
+<script defer type="text/simi-script"> 
+
   var searchForm = document.querySelector('#transaction-search-form')
   searchForm.onsubmit = e => {
     const searchValue = document.querySelector('input[name="search"]').value
@@ -335,6 +354,7 @@
   var totalAmountElem = document.querySelector('#trans-total-amount')
   var paymentLinkElem = document.querySelector('#payment-link')
   var qrCodeElem = document.querySelector('#trans-qr-code')
+  var paymentStatus = document.querySelector('#payment-status')
 
   function loadDoc() {
     var queryString = window.location.search
@@ -352,7 +372,7 @@
           transNumberElem.innerText = jsonResponse.order_number || ''
           totalAmountElem.innerText = jsonResponse.total_amount || 0
           paymentLinkElem.href = jsonResponse.payment_link || ''
-          transNumberElem .innerText = jsonResponse.status || ''
+          paymentStatus .innerText = jsonResponse.status || ''
           qrCodeElem.src =
             'https://barcodeapi.org/api/qr/' +
             (jsonResponse.payment_link || 'abenson.com')
