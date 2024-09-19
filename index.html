@@ -63,7 +63,7 @@
     height: 250px;
   }
 
-  .payment-info-container {
+   .payment-info-container {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -77,8 +77,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     padding-right: 20px;
+  }
+
+  .p-qr-width {
+    width: 100%;
   }
 
   .payment-details {
@@ -134,10 +138,24 @@
     width: 180px;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
   }
 
+  .enlarge-qr-img {
+    display: block;
+    height: 100%;
+    transform: scale(2);
+    transition: 0.3s ease-out;
+    margin: 0 auto; 
+    position: relative;
+    z-index: 10;
+  }
+
+
   .scan-qr-container {
-    width: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .scan-qr-container p {
@@ -194,7 +212,7 @@
   }
 
   .pay-btn-container {
-    width: 90%;
+    width: 80%;
   }
 
   .pay-btn {
@@ -235,22 +253,33 @@
     margin-bottom: 8px;
   }
 
+  .transaction-container-2 {
+      display: none;
+    }
+
   @media (max-width: 1200px) {
+
+    
     .payment-details {
       display: block;
     }
 
+    .status-main-container {
+      display: flex;
+      justify-content: center;
+    }
+
     .status-container {
-    display: flex;
-    justify-content: space-around;
-    /* background-color: #f1f2f6; */
-    background-color: #fff;
-    border-radius: 25px;
-    height: fit-content;
-    padding: 16px 20px;
-    margin-top: 16px;
-    height: 250px;
-  }
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      border-radius: 25px;
+      height: fit-content;
+      padding: 16px 20px;
+      margin-top: 16px;
+      height: 250px;
+      width: 600px;
+    }
 
     .heading {
       display: block;
@@ -269,15 +298,28 @@
       width: 100%;
       justify-content: center;
       margin: 0;
+      margin-bottom: 3px;
     }
 
-    .qr-img {
+    /* .qr-img {
       height: 169px;
       width: 169px;
-    }
+    } */
 
     .scan-qr-container {
-      width: 169px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+
+    .scan-qr-container p {
+      margin: 0;
+      padding: 0;
+      top: 0;
+      color: #767676;
+      font-size: 13px;
+      text-align: center;
     }
 
     .container-payment-link {
@@ -297,7 +339,12 @@
     .status-container {
       padding: 16px;
     }
+
+    .transaction-container-2 {
+      display: none;
+    }
   }
+
 </style>
 
 <!-- HTML -->
@@ -329,46 +376,60 @@
       </button>
     </form>
   </div>
-  <div class="status-container">
-    <div class="payment-info-container">
-      <div class="transaction-id">
-        Transaction ID:
-        <span class="transaction-no" id="trans-number">########</span>
-      </div>
-      <div class="payment-status-cont">
-        Status:
-        <span class="payment-status-value" id="payment-status">########</span>
-      </div>
-      <div class="payment-details">
-        <div class="payment-amount">
-          <div class="total-amount-title">Total Amount</div>
-          <div class="total-amount">
-            PHP <span id="trans-total-amount">0</span>
+  
+  <div class="status-main-container">
+    <div class="status-container">
+      <div class="payment-info-container">
+        <div class="transaction-id">
+          Transaction ID:
+          <span class="transaction-no" id="trans-number">########</span>
+        </div>
+        <div class="payment-status-cont">
+          Status:
+          <span class="payment-status-value" id="payment-status">########</span>
+        </div>
+        <div class="payment-details">
+          <div class="payment-amount">
+            <div class="total-amount-title">Total Amount</div>
+            <div class="total-amount">
+              PHP <span id="trans-total-amount">0</span>
+            </div>
           </div>
         </div>
+        <div class="pay-btn-container">
+          <a href="#" class="pay-btn" id="payment-link" target="_blank">Pay</a>
+        </div>
       </div>
-      <div class="pay-btn-container">
-        <a href="#" class="pay-btn" id="payment-link" target="_blank">Pay</a>
+      <div class="payment-qr-container">
+        <div class="qr">
+          <img
+            id="trans-qr-code"
+            src="https://barcodeapi.org/api/qr/abenson.com?"
+            class="qr-img"
+            alt="QR Code"
+          />
+        </div>
+        <div class="scan-qr-container">
+          <p>Scan QR Code</p>
+        </div>
       </div>
-    </div>
-    <div class="payment-qr-container">
-      <div class="qr">
-        <img
-          id="trans-qr-code"
-          src="https://barcodeapi.org/api/qr/abenson.com?"
-          class="qr-img"
-          alt="QR Code"
-        />
-      </div>
-      <div class="scan-qr-container">
-        <p>Scan QR Code</p>
+      <div class="transaction-container-2">
+        <div class="transaction-id=2">
+          Transaction ID:
+          <span class="transaction-no-2" id="trans-number-2">########</span>
+        </div>
+        <div class="payment-status-cont-2">
+          Status:
+          <span class="payment-status-value-2" id="payment-status-2">########</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<script defer type="text/simi-script"> 
 
+<!-- <script defer type="text/simi-script">  -->
+<script>
   var searchForm = document.querySelector('#transaction-search-form')
   searchForm.onsubmit = e => {
     const searchValue = document.querySelector('input[name="search"]').value
@@ -387,6 +448,11 @@
   var paymentLinkElem = document.querySelector('#payment-link')
   var qrCodeElem = document.querySelector('#trans-qr-code')
   var paymentStatus = document.querySelector('#payment-status')
+
+  qrCodeElem.addEventListener('click', () => {
+    qrCodeElem.classList.toggle('enlarge-qr-img');
+    qrCodeElem.classList.add('p-qr-width');
+  })
 
   function loadDoc() {
     var queryString = window.location.search
