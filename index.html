@@ -56,7 +56,7 @@
     justify-content: space-around;
     /* background-color: #f1f2f6; */
     background-color: #fff;
-    border-radius: 25px;
+    border-radius: 12px;
     height: fit-content;
     padding: 16px 20px;
     margin-top: 16px;
@@ -345,6 +345,72 @@
     }
   }
 
+  @media (max-width: 576px) { 
+    .status-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      width: 100%;       
+      max-width: 480px;       
+    }
+
+    .transaction-container-2 {
+      display: unset;
+      color: #8a8a8a;
+      font-size: 13px;
+      margin-bottom: .5rem;
+    }
+
+    .payment-info-container {
+      order: 2;
+      padding-inline: 0;
+    }
+
+    .payment-amount {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;         
+    }
+
+    .total-amount {
+      white-space: nowrap; 
+      overflow: hidden; 
+    }
+
+    .payment-qr-container {
+      order: 1;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .scan-qr-container {
+      display: none;
+    }
+
+    .transaction-id, .payment-status-cont {
+      display: none;
+    }
+
+    .pay-btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .pay-btn {
+      width: 100%;          
+      min-width: 200px;     
+      max-width: 300px;    
+      flex-shrink: 0;       
+      text-align: center;  
+    }
+
+  }
+
 </style>
 
 <!-- HTML -->
@@ -392,7 +458,7 @@
           <div class="payment-amount">
             <div class="total-amount-title">Total Amount</div>
             <div class="total-amount">
-              PHP <span id="trans-total-amount">0</span>
+              PHP <span id="trans-total-amount">206,610.10</span>
             </div>
           </div>
         </div>
@@ -418,18 +484,14 @@
           Transaction ID:
           <span class="transaction-no-2" id="trans-number-2">########</span>
         </div>
-        <div class="payment-status-cont-2">
-          Status:
-          <span class="payment-status-value-2" id="payment-status-2">########</span>
-        </div>
       </div>
     </div>
   </div>
 </div>
 
 
-<!-- <script defer type="text/simi-script">  -->
-<script>
+<script defer type="text/simi-script"> 
+
   var searchForm = document.querySelector('#transaction-search-form')
   searchForm.onsubmit = e => {
     const searchValue = document.querySelector('input[name="search"]').value
@@ -448,6 +510,7 @@
   var paymentLinkElem = document.querySelector('#payment-link')
   var qrCodeElem = document.querySelector('#trans-qr-code')
   var paymentStatus = document.querySelector('#payment-status')
+  var transNumber2 = document.querySelector('#trans-number-2')
 
   qrCodeElem.addEventListener('click', () => {
     qrCodeElem.classList.toggle('enlarge-qr-img');
@@ -471,6 +534,7 @@
           totalAmountElem.innerText = jsonResponse.total_amount || 0
           paymentLinkElem.href = jsonResponse.payment_link || ''
           paymentStatus .innerText = jsonResponse.status || ''
+          transNumber2 .innerText = jsonResponse.order_number || ''
           qrCodeElem.src =
             'https://barcodeapi.org/api/qr/' +
             (jsonResponse.payment_link || 'abenson.com')
