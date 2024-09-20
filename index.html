@@ -58,7 +58,9 @@
 
   .status-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /* background-color: #f1f2f6; */
     background-color: #fff;
     border-radius: 12px;
@@ -67,6 +69,16 @@
     margin-top: 16px;
     width: 100%;
     max-width: 476px;
+    gap: 8px;
+  }
+
+
+  .status-info-qr-inner-container {
+    width: 95%;
+    max-width: 438px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px 0 50px;
   }
 
    .payment-info-container {
@@ -101,10 +113,11 @@
   }
 
   .total-amount {
-    font-size: 28px;
+    white-space: nowrap; 
+    font-size: 36px;
     font-weight: 600;
     color: #4c525c;
-    margin-bottom: 3px;
+    
   }
 
   .total-amount-title {
@@ -264,9 +277,31 @@
       display: none;
     }
 
-    .payment-status-cont {
-      display: none;
-    }
+  .payment-status-cont {
+    display: none;
+  }
+
+  .pay-desktop-container {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+  }
+
+  .pay-desktop-btn {
+    background-color: #fae100;
+    border-radius: 28px;
+    border: none;
+    display: block;
+    color: #0a4488 !important;
+    width: 100%;
+    text-align: center;
+    padding: 8px 0 8px 0;
+    font-size: 15px !important;
+    line-height: 2 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+
 
   @media (max-width: 1200px) {
 
@@ -368,10 +403,10 @@
       font-size: 14px;
     }
 
-    .status-container {
+    .status-info-qr-inner-container {
       display: flex;
-      flex-direction: column;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: auto;
       width: 100%;       
@@ -383,6 +418,7 @@
       display: unset;
       color: #8a8a8a;
       font-size: 14px;
+      font-weight: 600;
       margin-bottom: .5rem;
     }
 
@@ -396,7 +432,8 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;   
-      height: 60px;      
+      height: 60px;     
+      margin-bottom: 8px; 
     }
 
     .total-amount-title {
@@ -422,7 +459,6 @@
     .qr {
       display: flex;
       justify-content: center;
-      margin-right: 5px;
       margin-bottom: 3px;
     }
 
@@ -450,7 +486,7 @@
     }
 
     .pay-btn {
-      width: 100%;          
+      width: 180%;          
       min-width: 200px;     
       max-width: 300px;    
       flex-shrink: 0;       
@@ -458,6 +494,9 @@
       font-size: 15px !important;
     }
 
+    .pay-desktop-container {
+      display: none;
+    }
   }
 
 </style>
@@ -495,43 +534,47 @@
   <div class="status-main-container">
     <div class="status-container">
        <!--  mobile view -->
-      <div class="payment-info-container">
-        <div class="transaction-id">
-          Transaction ID:
-          <span class="transaction-no" id="trans-number">########</span>
-        </div>
-        <div class="payment-status-cont">
-          Status:
-          <span class="payment-status-value" id="payment-status">########</span>
-        </div>
-        <div class="payment-details">
-          <div class="payment-amount">
-            <div class="total-amount-title">Total Amount</div>
-            <div class="total-amount">
-              PHP <span id="trans-total-amount">206,610.10</span>
+      <div class="status-info-qr-inner-container">
+        <div class="payment-info-container">
+          <div class="transaction-id">
+            Transaction ID:
+            <span class="transaction-no" id="trans-number">########</span>
+          </div>
+          <div class="payment-status-cont">
+            Status:
+            <span class="payment-status-value" id="payment-status">########</span>
+          </div>
+          <div class="payment-details">
+            <div class="payment-amount">
+              <div class="total-amount-title">Total Amount</div>
+              <div class="total-amount">
+                PHP <span id="trans-total-amount">206,610.10</span>
+              </div>
             </div>
           </div>
+          <div class="pay-btn-container">
+            <a href="#" class="pay-btn" id="payment-link" target="_blank">Pay</a>
+          </div>
         </div>
-        <div class="pay-btn-container">
-          <a href="#" class="pay-btn" id="payment-link" target="_blank">Pay</a>
+        <div class="payment-qr-container">
+          <div class="qr">
+            <img
+              id="trans-qr-code"
+              src="https://barcodeapi.org/api/qr/abenson.com?"
+              class="qr-img"
+              alt="QR Code"
+            />
+          </div>
         </div>
-      </div>
-      <div class="payment-qr-container">
-        <div class="qr">
-          <img
-            id="trans-qr-code"
-            src="https://barcodeapi.org/api/qr/abenson.com?"
-            class="qr-img"
-            alt="QR Code"
-          />
-        </div>
-      </div>
       <div class="transaction-container-2">
         <div class="transaction-id=2">
           Transaction ID:
           <span class="transaction-no-2" id="trans-number-2">########</span>
         </div>
       </div>
+    </div>
+    <div class="pay-desktop-container">
+      <a href="#" class="pay-desktop-btn" id="payment-link" target="_blank">Pay</a>
     </div>
   </div>
 </div>
