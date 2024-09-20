@@ -50,17 +50,23 @@
     position: relative;
     z-index: 1;
   }
+  
+  .status-main-container {
+    display: flex;
+    justify-content: center;
+  }
 
   .status-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     /* background-color: #f1f2f6; */
     background-color: #fff;
     border-radius: 12px;
     height: fit-content;
     padding: 16px 20px;
     margin-top: 16px;
-    height: 250px;
+    width: 100%;
+    max-width: 476px;
   }
 
    .payment-info-container {
@@ -69,16 +75,14 @@
     justify-content: center;
     align-items: baseline;
     flex-direction: column;
-    padding-left: 20px;
   }
 
   .payment-qr-container {
     width: 50%;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding-right: 20px;
+    align-items: center;  */
   }
 
   .p-qr-width {
@@ -93,6 +97,7 @@
   .payment-amount {
     display: block;
     width: 100%;
+    gap: 8px;
   }
 
   .total-amount {
@@ -110,7 +115,7 @@
   .transaction-id {
     color: #767676;
     font-size: 13px;
-    margin-bottom: 3px;
+    margin-bottom: 16px;
   }
 
   .payment-status-cont {
@@ -129,13 +134,14 @@
 
   .qr {
     display: flex;
+    justify-content: flex-end;
     margin-right: 5px;
     margin-bottom: 3px;
   }
 
   .qr-img {
     /* height: 109px; */
-    width: 180px;
+    width: 107px;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     cursor: pointer;
@@ -170,7 +176,7 @@
 
   .search-bar {
     width: 100%;
-    max-width: 600px;
+    max-width: 476px;
     background: rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
@@ -213,6 +219,7 @@
 
   .pay-btn-container {
     width: 80%;
+    display: none;
   }
 
   .pay-btn {
@@ -257,28 +264,27 @@
       display: none;
     }
 
+    .payment-status-cont {
+      display: none;
+    }
+
   @media (max-width: 1200px) {
 
     
     .payment-details {
       display: block;
-    }
-
-    .status-main-container {
-      display: flex;
-      justify-content: center;
+      
     }
 
     .status-container {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       background-color: #fff;
-      border-radius: 25px;
+      border-radius: 15px;
       height: fit-content;
       padding: 16px 20px;
       margin-top: 16px;
-      height: 250px;
-      width: 600px;
+      max-width: 476px;
     }
 
     .heading {
@@ -296,7 +302,7 @@
 
     .qr {
       width: 100%;
-      justify-content: center;
+      justify-content: flex-end;
       margin: 0;
       margin-bottom: 3px;
     }
@@ -307,10 +313,10 @@
     } */
 
     .scan-qr-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
 
 
     .scan-qr-container p {
@@ -343,9 +349,25 @@
     .transaction-container-2 {
       display: none;
     }
+
+    .payment-status-cont {
+      display: none;
+    }
   }
 
   @media (max-width: 576px) { 
+
+    .abenson-pay {
+      display: block;
+      width: 184px;
+      height: 25px;
+      margin-bottom: 8px;
+    }
+
+    .sub-heading {
+      font-size: 14px;
+    }
+
     .status-container {
       display: flex;
       flex-direction: column;
@@ -353,13 +375,14 @@
       align-items: center;
       height: auto;
       width: 100%;       
-      max-width: 480px;       
+      max-width: 480px;
+      border-radius: 12px;       
     }
 
     .transaction-container-2 {
       display: unset;
       color: #8a8a8a;
-      font-size: 13px;
+      font-size: 14px;
       margin-bottom: .5rem;
     }
 
@@ -372,23 +395,48 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;         
+      flex-direction: column;   
+      height: 60px;      
+    }
+
+    .total-amount-title {
+      font-size: 12px;
     }
 
     .total-amount {
       white-space: nowrap; 
       overflow: hidden; 
+      font-size: 32px;
     }
 
     .payment-qr-container {
       order: 1;
       padding: 0;
       margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .qr {
+      display: flex;
+      justify-content: center;
+      margin-right: 5px;
+      margin-bottom: 3px;
+    }
+
+    .qr-img {
+      border-radius: 10px;
+      height: 170px;      
+      width: 170px;
+  
     }
 
     .scan-qr-container {
       display: none;
     }
+
 
     .transaction-id, .payment-status-cont {
       display: none;
@@ -407,6 +455,7 @@
       max-width: 300px;    
       flex-shrink: 0;       
       text-align: center;  
+      font-size: 15px !important;
     }
 
   }
@@ -442,9 +491,10 @@
       </button>
     </form>
   </div>
-  
+
   <div class="status-main-container">
     <div class="status-container">
+       <!--  mobile view -->
       <div class="payment-info-container">
         <div class="transaction-id">
           Transaction ID:
@@ -474,9 +524,6 @@
             class="qr-img"
             alt="QR Code"
           />
-        </div>
-        <div class="scan-qr-container">
-          <p>Scan QR Code</p>
         </div>
       </div>
       <div class="transaction-container-2">
