@@ -54,6 +54,7 @@
   .status-main-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 45px;
   }
 
   .status-container {
@@ -300,7 +301,50 @@
     font-weight: 600 !important;
     text-decoration: none !important;
   }
+  
+  .features-main-container {
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
 
+  .feature-inner-container {
+    display: flex;
+    gap: 40px;
+  }
+
+  .secure-div, .trusted-div, .customer-div {
+    display: flex;
+    gap: 5px;
+    max-height: 39px;
+  }
+
+  .icon-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .feature-inner-container div div p {
+    display: flex;
+    align-items: center;
+  }
+
+  .feature-title-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    white-space: nowrap;
+    padding: 0 8px 0 8px;
+  }
+
+  .feature-title {
+    font-size: 14px;
+  }
+
+  .feature-content {
+    font-size: 12px;
+  }
 
   @media (max-width: 1200px) {
 
@@ -386,6 +430,15 @@
 
     .payment-status-cont {
       display: none;
+    }
+  }
+
+  @media (max-width: 768px) { 
+    .feature-inner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
     }
   }
 
@@ -496,6 +549,17 @@
     .pay-desktop-container {
       display: none;
     }
+
+    .features-main-container {
+      margin-top: 25px;
+    }
+
+    .feature-inner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
   }
 
 </style>
@@ -577,6 +641,31 @@
     </div>
   </div>
 </div>
+<section class="features-main-container">
+  <div class="feature-inner-container">
+    <div class="secure-div">
+      <div class="icon-div"><img src="https://lh3.googleusercontent.com/d/1lEnjCDoXVOrITLnM-qVRQWykFeGRFR6r"></div>
+      <div class="feature-title-container">
+        <div class="feature-title">Secure Checkout </div>
+        <div class="feature-content">Protected by encryption </div>
+      </div>
+    </div>
+    <div class="trusted-div">
+      <div class="icon-div"><img src="https://lh3.googleusercontent.com/d/1lEnjCDoXVOrITLnM-qVRQWykFeGRFR6r"></div>
+      <div class="feature-title-container">
+        <div class="feature-title">Trusted Payment </div>
+        <div class="feature-content">Reliable and safe options </div>
+      </div>
+    </div>
+    <div class="customer-div">
+      <div class="icon-div"><img src="https://lh3.googleusercontent.com/d/1lEnjCDoXVOrITLnM-qVRQWykFeGRFR6r"></div>
+      <div class="feature-title-container">
+        <div class="feature-title">Customer Support </div>
+        <div class="feature-content">Ready to assist you</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <script defer type="text/simi-script"> 
