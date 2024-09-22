@@ -56,7 +56,6 @@
   .blank-state-guide-main-container {
     margin-bottom: 45px;
     margin-top: 10px;
-
   }
 
   .works-div {
@@ -130,7 +129,7 @@
   }
 
   .guide-step-content {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400px;
   }
   
@@ -168,7 +167,7 @@
   }
 
   .guide-img-content-2 div img {
-    width: 176px;
+    width: 160px;
     height: 325px;
   }
 
@@ -483,7 +482,28 @@
   /* 1200 breakpoint */
   @media (max-width: 1200px) {
 
+    .work-guide-main-container {
+      display: flex;
+      justify-content: center;
+    }
     
+    /* .work-guide-container {
+      max-width: 600px;
+    } */
+  
+    .guide-div {
+      min-width: 360px;
+      height: 209px;
+      background-color: #3E42CF99;
+      border-radius: 20px;
+      overflow: visible;
+      box-sizing: border-box; 
+      color: white;
+      display: flex;
+      overflow: hidden;
+    }
+
+
     .payment-details {
       display: block;
       
@@ -568,7 +588,7 @@
     }
   }
 
-  @media (max-width: 768px) { 
+  @media (max-width: 841px) { 
 
     .work-guide-container {
       flex-direction: column;
@@ -739,36 +759,38 @@
     <div class="works-div">
       <p>How It Works</p>
     </div>
-    <div class="work-guide-container">
-      <div class="guide-div">
-        <div class="guide-text-container">
-          <div class="guide-number"><p>1</p></div>
-          <div class="guide-step">Enter Transaction ID</div>
-          <div class="guide-step-content">Enter your transaction ID to proceed with the payment or to check the status of your payment.</div>
+    <div class="work-guide-main-container">
+      <div class="work-guide-container">
+        <div class="guide-div">
+          <div class="guide-text-container">
+            <div class="guide-number"><p>1</p></div>
+            <div class="guide-step">Enter Transaction ID</div>
+            <div class="guide-step-content">Enter your transaction ID to proceed with the payment or to check the status of your payment.</div>
+          </div>
+          <div class="guide-img-content-1">
+            <div>
+              <img
+                src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
+                class="guide-img"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
-        <div class="guide-img-content-1">
-          <div>
-            <img
+        <div class="guide-div">
+          <div class="guide-text-container">
+            <div class="guide-number"><p>2</p></div>
+            <div class="guide-step">Pay</div>
+            <div class="guide-step-content">Access the QR code or click the "Pay" button to complete your payment.</div>
+          </div>
+          <div class="guide-img-content-2">
+            <div>
+              <img
               src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
               class="guide-img"
               alt=""
             />
-          </div>
-        </div>
-      </div>
-      <div class="guide-div">
-        <div class="guide-text-container">
-          <div class="guide-number"><p>2</p></div>
-          <div class="guide-step">Pay</div>
-          <div class="guide-step-content">Access the QR code or click the "Pay" button to complete your payment.</div>
-        </div>
-        <div class="guide-img-content-2">
-          <div>
-            <img
-            src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
-            class="guide-img"
-            alt=""
-          />
+            </div>
           </div>
         </div>
       </div>
