@@ -1,0 +1,265 @@
+<!-- CSS -->
+<style>
+  .container-payment-link{
+      display: block;
+      justify-content: center;
+      align-items: center;
+      background-color: #1E22AA;
+      height: fit-content; 
+      border-radius: 20px;
+      padding: 25px 30%;
+      position: relative;
+      overflow: hidden;
+  }
+  
+  /* First slanted rectangle */
+  .container-payment-link::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      width: 2000px;
+      height: 200%;
+      left: calc(100% - 400px);
+      top: 40%;
+      background: linear-gradient(221.21deg, rgba(30, 34, 170, 0) 14.7%, rgba(9, 11, 73, 0.1) 71.16%);
+      transform: rotate(25.47deg);
+  }
+  
+  /* Second slanted rectangle */
+  .container-payment-link::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      width: 2000px;
+      height: 200%;
+      left: calc(100% - 450px);
+      top: 40%;
+      background: linear-gradient(221.21deg, rgba(30, 34, 170, 0) 14.7%, rgba(9, 11, 73, 0.1) 71.16%);
+      transform: rotate(25.47deg);
+  }
+  
+  .container-payment-link * {
+      position: relative; 
+      z-index: 3;
+  }
+  
+  .status-container{
+      display: flex;
+      justify-content: space-between;
+      background-color: #F1F2F6;
+      border-radius: 12px;
+      height: fit-content;
+      padding: 16px 20px;
+      margin-top: 16px;
+  }
+  
+  .payment-details{
+      display: flex;
+      width: 100%;
+  
+  }
+  
+  .payment-amount{
+      display: block;
+      width: 100%;
+  }
+  
+  .total-amount{
+      font-size: 28px;
+      font-weight: 600; 
+      color: #4C525C;
+  }
+  
+  .total-amount-title{
+      color: #8A8A8A;
+  }
+  
+  .transaction-id{
+      color: #767676;
+  }
+  
+  .transaction-no{
+      font-weight: 600;
+  }
+  
+  .icon-img{
+      height: 50px;
+      width: 50px;
+  }
+  
+  .search-bar {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      border-radius: 60px;
+      box-sizing: border-box;
+      justify-content: center;
+      height: 40px;
+  }
+  
+  .search-bar input {
+      background: transparent;
+      flex: 1;
+      border: 0;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      color: #D5DAE4;
+  }
+  
+  ::placeholder {
+      color: #D5DAE4;
+      font-size: 14px;
+  }
+  
+  .search-bar button .searchbar-img {
+      width: 25px;
+      height: 25px;
+  }
+  
+  .search-bar button {
+      border: 0;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .success-big{
+      display: flex;
+      align-items: center;
+  }
+  
+  .success-small{
+      display: none;
+  }
+  
+  .payment-success{
+      background-color: #36C190;
+      color: #FCFCFD;
+      width: fit-content;
+      padding: 0px 10px;
+      border-radius: 20px;
+      font-weight: 300;
+  }
+  
+  .heading{
+      color: #FCFCFD;
+      font-size: 28px;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 8px;
+  }
+  
+  .sub-heading{
+      color: #FCFCFD;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 8px;
+  }
+  
+  .heading-icon{
+      display: flex;
+      justify-content: center;
+  }
+  
+  .abenson-pay{
+      display: block;
+      width: 324.85px;
+      height: 62.29px;
+      margin-bottom: 8px;
+  }
+  
+  @media (max-width: 1200px) {
+      .payment-details{
+          display: block;
+      }
+  
+      .heading{
+          font-size: 18px;
+      }
+  
+      .success-big{
+          display: none;
+      }
+  
+      .success-small{
+          display: flex;
+          justify-content: center;
+          margin-bottom: 5px;
+      }
+  
+      .status-container{
+          display: flex;
+          justify-content: center;
+          margin-top: 16px;
+      }
+      
+      .left{
+          display: block;
+          text-align: center;
+      }
+  
+      .mobile{
+          display: block;
+      }
+  
+      .payment-success{
+          margin: 0 auto;
+      }
+  
+      .container-payment-link{
+          padding: 25px 20px;
+      }
+  
+      /* First slanted rectangle */
+      .container-payment-link::before {
+          left: calc(100% - 300px);
+      }
+         
+      /* Second slanted rectangle */
+      .container-payment-link::after {
+          left: calc(100% - 350px);
+      }
+  }
+  </style>
+          
+  <!-- HTML -->
+  <div class="container-payment-link">
+      <div class="heading-icon">
+          <img src="{{media url=wysiwyg/pages/abensonpay.png}}" alt="" class="abenson-pay" />
+      </div>
+      <div class="sub-heading">Safe and secured payment for your Abenson purchases</div>
+      <div style="display: flex; justify-content: center;">
+          <form action="" autocomplete="off" class="search-bar">
+              <input type="text" placeholder="Enter Transaction ID..." name="search">
+              <button type="submit"><img src="{{media url=wysiwyg/pages/payment-link-search-icon.png}}" alt="" class="searchbar-img" />
+          </button>
+          </form>
+      </div>
+      <div class="status-container">
+          <div class="mobile">
+              <div class="success-small">
+                  <img src="{{media url=wysiwyg/pages/payment-link-success.png}}" alt="success" class="icon-img" />
+              </div>
+              <div class="left">
+                  <div class="transaction-id">Transaction ID: <span class="transaction-no">01021010</span></div>
+                  <div class="payment-details">
+                      <div class="payment-amount">
+                          <div class="total-amount-title">Total Amount: </div>
+                          <div class="total-amount">PHP 2,610.00</div>
+                          <div class="payment-success">Payment Success</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="success-big">
+              <img src="{{media url=wysiwyg/pages/payment-link-success.png}}" alt="success" class="icon-img" />
+          </div>
+      </div>            
+  </div>
