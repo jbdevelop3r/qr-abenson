@@ -389,7 +389,7 @@
   }
 
   .hide-element {
-    display: none;
+    display: none !important;
   }
 
   .success-icon-container {
@@ -397,6 +397,16 @@
     justify-content: end;
     height: 100%;
     align-items: center;
+  }
+
+  .note{
+    background: #DADCE080;
+    border-radius: 10px;
+    display: block;
+    margin-top: 5px;
+    padding: 5px 15px;
+    text-align: center;
+    color: #767676;
   }
   
   /* 1200 breakpoint */
@@ -695,7 +705,7 @@
               </div>
             </div>
           </div>
-          <div class="pay-btn-container">
+          <div class="pay-btn-container" id="pay-btn-container">
             <a href="#" class="pay-btn" id="payment-link" target="_blank">Pay</a>
           </div>
         </div>
@@ -719,9 +729,12 @@
         </div>
       </div>
     </div>
-    <div class="pay-desktop-container">
+    <div class="pay-desktop-container" id="pay-desktop-container">
       <a href="#" class="pay-desktop-btn" id="payment-link" target="_blank">Pay</a>
     </div>
+    <div class="note hide-element" id="note-container">
+      Contact <span style="text-decoration: underline;">8811 8811</span> or <span style="text-decoration: underline;">Viber Chat</span> for any issues or concerns.
+  </div>
   </div>
 </div>
 <section class="features-main-container">
@@ -792,6 +805,9 @@
   var transNumber2 = document.querySelector('#trans-number-2')
   var statusMainContainer = document.querySelector('.status-main-container')
   var successIconContainer = document.querySelector('#success-icon-container')
+  var noteContainer = document.querySelector('#note-container')
+  var payDesktopContainer = document.querySelector('#pay-desktop-container')
+  var payMobileContainer = document.querySelector('#pay-btn-container')
 
   qrCodeElem.addEventListener('click', () => {
     qrCodeElem.classList.toggle('enlarge-qr-img');
@@ -812,7 +828,10 @@
           console.log(jsonResponse)
           if(jsonResponse.status == "Processing") {
             qrContainer.classList.add('hide-element')
+            payDesktopContainer.classList.add('hide-element')
+            payMobileContainer.classList.add('hide-element')
             successIconContainer.classList.remove('hide-element')
+            noteContainer.classList.remove('hide-element')
           }
           transNumberElem.innerText = jsonResponse.order_number || ''
           totalAmountElem.innerText = jsonResponse.total_amount || 0
