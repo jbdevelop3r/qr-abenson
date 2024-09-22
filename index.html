@@ -91,6 +91,85 @@
     border-radius: 20px;
     overflow: visible;
     box-sizing: border-box; 
+    color: white;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .guide-text-container {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 0;
+    margin-left: 31.5px;
+    gap: 8px;
+  }
+
+  .guide-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 14px;
+    background-color: #1e22aa;
+  }
+
+  .guide-number p {
+    font-size: 16.5px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .guide-step {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 0;
+  }
+
+  .guide-step-content {
+    font-size: 14px;
+    font-weight: 400px;
+  }
+  
+  .guide-img-content-1 {
+    width: 45%;
+    height: 286px;
+    opacity: .5;
+    display: flex;
+    align-items: center;
+    top: 75px;
+    padding-right: 10px;
+  }
+
+  .guide-img-content-1 div {
+    overflow: hidden;
+  }
+
+  .guide-img-content-1 div img {
+    width: 160px;
+    height: 286px;
+  }
+
+  .guide-img-content-2 {
+    width: 45%;
+    height: 286px;
+    opacity: .5;
+    display: flex;
+    align-items: center;
+    top: -149px;
+    padding-right: 10px;
+  }
+
+  .guide-img-content-2 div {
+    overflow: hidden;
+  }
+
+  .guide-img-content-2 div img {
+    width: 176px;
+    height: 325px;
   }
 
   /* STATUS SECTION */
@@ -302,6 +381,7 @@
   .sub-heading {
     color: #fcfcfd;
     font-size: 14px;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 8px;
   }
@@ -368,6 +448,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .feature-icon-img {
+    width: 22px;
+    height: 22px;
   }
 
   .feature-inner-container div div p {
@@ -484,6 +569,11 @@
   }
 
   @media (max-width: 768px) { 
+
+    .work-guide-container {
+      flex-direction: column;
+    }
+    
     .feature-inner-container {
       display: flex;
       flex-direction: column;
@@ -650,8 +740,38 @@
       <p>How It Works</p>
     </div>
     <div class="work-guide-container">
-      <div class="guide-div"></div>
-      <div class="guide-div"></div>
+      <div class="guide-div">
+        <div class="guide-text-container">
+          <div class="guide-number"><p>1</p></div>
+          <div class="guide-step">Enter Transaction ID</div>
+          <div class="guide-step-content">Enter your transaction ID to proceed with the payment or to check the status of your payment.</div>
+        </div>
+        <div class="guide-img-content-1">
+          <div>
+            <img
+              src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
+              class="guide-img"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="guide-div">
+        <div class="guide-text-container">
+          <div class="guide-number"><p>2</p></div>
+          <div class="guide-step">Pay</div>
+          <div class="guide-step-content">Access the QR code or click the "Pay" button to complete your payment.</div>
+        </div>
+        <div class="guide-img-content-2">
+          <div>
+            <img
+            src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
+            class="guide-img"
+            alt=""
+          />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -705,21 +825,39 @@
 <section class="features-main-container">
   <div class="feature-inner-container">
     <div class="secure-div">
-      <div class="icon-div"><img src="https://lh3.googleusercontent.com/d/1lEnjCDoXVOrITLnM-qVRQWykFeGRFR6r"></div>
+      <div class="icon-div">       
+        <img
+          src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
+          class="feature-icon-img"
+          alt=""
+        />
+      </div>
       <div class="feature-title-container">
         <div class="feature-title">Secure Checkout </div>
         <div class="feature-content">Protected by encryption </div>
       </div>
     </div>
     <div class="trusted-div">
-      <div class="icon-div"><img src="https://lh3.googleusercontent.com/d/1lEnjCDoXVOrITLnM-qVRQWykFeGRFR6r"></div>
+      <div class="icon-div">       
+        <img
+          src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
+          class="feature-icon-img"
+          alt=""
+        />
+      </div>
       <div class="feature-title-container">
         <div class="feature-title">Trusted Payment </div>
         <div class="feature-content">Reliable and safe options </div>
       </div>
     </div>
     <div class="customer-div">
-      <div class="icon-div"><img src="https://lh3.googleusercontent.com/d/1lEnjCDoXVOrITLnM-qVRQWykFeGRFR6r"></div>
+      <div class="icon-div">       
+        <img
+         src="https://lh3.googleusercontent.com/d/1R9M5E8P3IPxjbWfpAL6RygHBkCQxCFn-"
+          class="feature-icon-img"
+          alt=""
+        />
+      </div>
       <div class="feature-title-container">
         <div class="feature-title">Customer Support </div>
         <div class="feature-content">Ready to assist you</div>
