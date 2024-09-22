@@ -50,11 +50,56 @@
     position: relative;
     z-index: 1;
   }
+
+  /* BLANK STATE */
+
+  .blank-state-guide-main-container {
+    margin-bottom: 45px;
+    margin-top: 10px;
+
+  }
+
+  .works-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .works-div p {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 0 10px 0;
+  }
+
+  .work-guide-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    overflow: visible;            
+    box-sizing: border-box; 
+  }
+
+  .guide-div {
+    min-width: 360px;
+    height: 209px;
+    background-color: #3E42CF99;
+    border-radius: 20px;
+    overflow: visible;
+    box-sizing: border-box; 
+  }
+
+  /* STATUS SECTION */
   
   .status-main-container {
     display: flex;
     justify-content: center;
     margin-bottom: 45px;
+    display: none;
   }
 
   .status-container {
@@ -346,6 +391,11 @@
     font-size: 12px;
   }
 
+  .hide-element {
+    display: none;
+  }
+  
+  /* 1200 breakpoint */
   @media (max-width: 1200px) {
 
     
@@ -593,6 +643,17 @@
       </button>
     </form>
   </div>
+  
+
+  <section class="blank-state-guide-main-container">
+    <div class="works-div">
+      <p>How It Works</p>
+    </div>
+    <div class="work-guide-container">
+      <div class="guide-div"></div>
+      <div class="guide-div"></div>
+    </div>
+  </section>
 
   <div class="status-main-container">
     <div class="status-container">
@@ -667,9 +728,9 @@
   </div>
 </section>
 
+<!-- functions -->
 
 <script defer type="text/simi-script"> 
-
   var searchForm = document.querySelector('#transaction-search-form')
   searchForm.onsubmit = e => {
     const searchValue = document.querySelector('input[name="search"]').value
@@ -678,7 +739,6 @@
     const currentUrl = new URL(window.location)
 
     currentUrl.searchParams.set('tid', searchValue)
-
     history.pushState(null, '', currentUrl)
     loadDoc()
   }
@@ -689,10 +749,10 @@
   var qrCodeElem = document.querySelector('#trans-qr-code')
   var paymentStatus = document.querySelector('#payment-status')
   var transNumber2 = document.querySelector('#trans-number-2')
+  var statusMainContainer = document.querySelector('.status-main-container')
 
   qrCodeElem.addEventListener('click', () => {
     qrCodeElem.classList.toggle('enlarge-qr-img');
-    qrCodeElem.classList.add('p-qr-width');
   })
 
   function loadDoc() {
@@ -716,6 +776,7 @@
           qrCodeElem.src =
             'https://barcodeapi.org/api/qr/' +
             (jsonResponse.payment_link || 'abenson.com')
+          
         } catch (e) {
           console.error('Error parsing JSON:', e)
           document.getElementById('demo').innerHTML =
