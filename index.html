@@ -333,11 +333,6 @@
     font-weight: 600 !important;
     text-decoration: none !important;
   }
-
-  .success-icon-img {
-      height: 50px;
-      width: 50px;
-  }
   
   .features-main-container {
     color: white;
@@ -398,6 +393,43 @@
     height: 100%;
     align-items: center;
   }
+  
+  .success-icon-container div { 
+    width: 78px;
+    height: 78px;
+    border-radius: 70px;
+    background-color:#A9FFE1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .success-icon-img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .failed-icon-container {
+    display: flex;
+    justify-content: end;
+    height: 100%;
+    align-items: center;
+  }
+
+  .failed-icon-container div { 
+    width: 78px;
+    height: 78px;
+    border-radius: 70px;
+    background-color:#FFC6C2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .failed-icon-img {
+    height: 50px;
+    width: 50px;
+  }
 
   .note{
     background: #DADCE080;
@@ -407,6 +439,24 @@
     padding: 5px 15px;
     text-align: center;
     color: #767676;
+  }
+
+  .payment-success{
+    background-color: #36C190;
+    color: #FCFCFD;
+    width: fit-content;
+    padding: 0px 10px;
+    border-radius: 20px;
+    font-weight: 300;
+  }
+
+  .payment-failed{
+    background-color: #DD3B30;
+    color: #FFFFFF;
+    width: fit-content;
+    padding: 0px 10px;
+    border-radius: 20px;
+    font-weight: 300;
   }
   
   /* 1200 breakpoint */
@@ -703,6 +753,8 @@
               <div class="total-amount">
                 PHP <span id="trans-total-amount">206,610.10</span>
               </div>
+              <div class="payment-success hide-element" id="payment-success">Payment Success</div>
+              <div class="payment-failed hide-element" id="payment-failed">Payment Failed</div>
             </div>
           </div>
           <div class="pay-btn-container" id="pay-btn-container">
@@ -719,7 +771,10 @@
             />
           </div>
           <div class="success-icon-container hide-element" id="success-icon-container">
-            <img src="{{media url=wysiwyg/pages/payment-link-success.png}}" alt="success" class="success-icon-img" />
+            <div><img src="{{media url=wysiwyg/pages/payment-link-success.png}}" alt="success" class="success-icon-img" /></div>
+          </div>
+          <div class="failed-icon-container hide-element" id="failed-icon-container">
+            <div><img src="{{media url=wysiwyg/pages/payment-link-failed.png}}" alt="failed" class="failed-icon-img" /></div>
           </div>
         </div>
       <div class="transaction-container-2">
@@ -805,9 +860,12 @@
   var transNumber2 = document.querySelector('#trans-number-2')
   var statusMainContainer = document.querySelector('.status-main-container')
   var successIconContainer = document.querySelector('#success-icon-container')
+  var failedIconContainer = document.querySelector('#failed-icon-container')
   var noteContainer = document.querySelector('#note-container')
   var payDesktopContainer = document.querySelector('#pay-desktop-container')
   var payMobileContainer = document.querySelector('#pay-btn-container')
+  var paymentSuccess = document.querySelector('#payment-success')
+  var paymentFailed = document.querySelector('#payment-failed')
 
   qrCodeElem.addEventListener('click', () => {
     qrCodeElem.classList.toggle('enlarge-qr-img');
@@ -826,12 +884,20 @@
         try {
           var jsonResponse = JSON.parse(this.responseText)
           console.log(jsonResponse)
-          if(jsonResponse.status == "Processing") {
+          if(jsonResponse.status == "ss") {
             qrContainer.classList.add('hide-element')
             payDesktopContainer.classList.add('hide-element')
             payMobileContainer.classList.add('hide-element')
             successIconContainer.classList.remove('hide-element')
             noteContainer.classList.remove('hide-element')
+            paymentSuccess.classList.remove('hide-element')
+          } else if (jsonResponse.status == "Processing") {
+            qrContainer.classList.add('hide-element')
+            payDesktopContainer.classList.add('hide-element')
+            payMobileContainer.classList.add('hide-element')
+            failedIconContainer.classList.remove('hide-element')
+            noteContainer.classList.remove('hide-element')
+            paymentFailed.classList.remove('hide-element')
           }
           transNumberElem.innerText = jsonResponse.order_number || ''
           totalAmountElem.innerText = jsonResponse.total_amount || 0
